@@ -1,20 +1,16 @@
-// add event listener to the search results
-
-// submit the form, make api call, create html elements for the search results
-
-// first make an api call
-
-// Select Items
-
 const form = document.querySelector('.movie-form');
+const movie = document.getElementById('movie');
 
-const apiLink = `http://www.omdbapi.com/?i=tt3896198&apikey=a346feec`;
+const KEY = 'a346feec'
 
-async function search(api) {
+
+async function search(searchQuery) {
   try {
-    const result = await fetch(api);
+    const apiLink = `http://www.omdbapi.com/?s=${searchQuery}&apikey=${KEY}`;
+    const result = await fetch(apiLink);
     const data = await result.json();
     console.log(data)
+    return data;
   } catch(error) {
     console.log(error)
   }
@@ -22,7 +18,8 @@ async function search(api) {
 
 const showResults = e => {
   e.preventDefault()
-  search(apiLink)
+  const searchInput = movie.value;
+  search(searchInput)
 }
 
 // Event Listeners
