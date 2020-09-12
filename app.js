@@ -15,6 +15,10 @@ const createMovie = (movie) => {
   moviesList.appendChild(element)
 };
 
+const setBackToDefault = () => {
+  searchInput.value = '';
+}
+
 async function search(searchQuery) {
   try {
     const apiLink = `http://www.omdbapi.com/?s=${searchQuery}&apikey=${KEY}`;
@@ -27,16 +31,26 @@ async function search(searchQuery) {
       console.log(movie.Title)
       createMovie(movie);
     })
-
     return data;
   } catch(error) {
     console.log(error)
   }
 }
 
+const clearItems = () => {
+  const movies = document.querySelectorAll('.movie-item');
+  movies.forEach(movie => {
+    moviesList.removeChild(movie)
+  })
+}
+
 const showResults = e => {
   e.preventDefault()
+  
+  clearItems();
   search(searchInput.value);
+  setBackToDefault();
+  
 }
 
 // Event Listeners
