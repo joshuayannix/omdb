@@ -1,8 +1,16 @@
 const form = document.querySelector('.movie-form');
-const movie = document.getElementById('movie');
+const searchInput = document.getElementById('searchInput');
+const moviesList = document.querySelector('.movies-list')
+const KEY = 'a346feec';
 
-const KEY = 'a346feec'
 
+const createMovie = (movie) => {
+  const element = document.createElement('article');
+  element.innerHTML = `
+    <p>${movie.Title}</p>
+  `;
+  moviesList.appendChild(element)
+};
 
 async function search(searchQuery) {
   try {
@@ -10,6 +18,13 @@ async function search(searchQuery) {
     const result = await fetch(apiLink);
     const data = await result.json();
     console.log(data)
+    console.log(data.Search)
+    let movies = data.Search;
+    movies.forEach(movie => {
+      console.log(movie.Title)
+      createMovie(movie);
+    })
+
     return data;
   } catch(error) {
     console.log(error)
@@ -18,8 +33,7 @@ async function search(searchQuery) {
 
 const showResults = e => {
   e.preventDefault()
-  const searchInput = movie.value;
-  search(searchInput)
+  search(searchInput.value);
 }
 
 // Event Listeners
