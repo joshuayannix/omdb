@@ -6,8 +6,11 @@ const KEY = 'a346feec';
 
 const createMovie = (movie) => {
   const element = document.createElement('article');
+  element.classList.add('movie-item')
   element.innerHTML = `
     <p>${movie.Title}</p>
+    <p>${movie.Year}</p>
+    <img class='poster' src=${movie.Poster}>
   `;
   moviesList.appendChild(element)
 };
