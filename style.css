@@ -8,16 +8,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(315deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  background: blue;
   color: white;
   font-family: sans-serif;
-
 }
+
 .movies-list {
   display: flex;
   width: 80%;
   flex-wrap: wrap;
-  border: 10px solid grey;
   padding: 10px;
 }
 
@@ -26,10 +25,31 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid orange;
   width: 300px;
+  font-size: 20px;
+  justify-content: center;
+  font-weight: bold;
+  border: 2px solid red;
 }
 
 .poster {
   width: 200px;
+}
+
+.movie-form {
+  width: 70%;
+}
+
+.search-btn {
+  width: 100px;
+  height: 40px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+#searchInput {
+  height: 40px;
+  font-size: 25px;
+  width: 80%
 }
