@@ -19,6 +19,7 @@ const setBackToDefault = () => {
   searchInput.value = '';
 }
 
+// http://www.omdbapi.com/?i=tt3896198&apikey=a346feec
 async function search(searchQuery) {
   try {
     const apiLink = `http://www.omdbapi.com/?s=${searchQuery}&apikey=${KEY}`;
